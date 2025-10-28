@@ -97,11 +97,11 @@ export const deleteById = async (
   try {
     const id = req.params.id;
 
-    const result = await TodoService.findById(id);
+    const result = await TodoService.findByIdid));
 
     if (!result) {
       return res.status(404).json({
-        message: "La tarea no existe",
+        message: "El usuario no existe",
       });
     }
 

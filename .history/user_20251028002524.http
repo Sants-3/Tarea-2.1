@@ -1,0 +1,21 @@
+### Consulta el listado de usuarios
+GET http://localhost:5000/users
+
+### Consulta de un usuario por id(number)
+GET http://localhost:5000/users/2
+
+### Crear una nueva tarea
+POST http://localhost:5000/users
+Content-Type: application/json
+
+7793998c-1b23-4b5f-8d36-312da4561772
+
+### Actualizacion una nueva tarea
+PUT http://localhost:5000/users/fedcb401-ed06-4a3b-a667-4beebac2d9b4
+Content-Type: application/json
+
+{
+  
+  "description": "Prueba de edicion de tareas"
+  
+}

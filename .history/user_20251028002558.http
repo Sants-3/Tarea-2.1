@@ -1,0 +1,24 @@
+### Consulta el listado de usuarios
+GET http://localhost:5000/users
+
+### Consulta de un usuario por id(number)
+GET http://localhost:5000/users/2
+
+### Crear una nuevo usuario
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+  "name": "ctorres",
+  "email": "ct@gmail.com"
+}
+
+### Actualizacion un usuario por tarea
+PUT http://localhost:5000/users/fedcb401-ed06-4a3b-a667-4beebac2d9b4
+Content-Type: application/json
+
+{
+  
+  "description": "Prueba de edicion de tareas"
+  
+}

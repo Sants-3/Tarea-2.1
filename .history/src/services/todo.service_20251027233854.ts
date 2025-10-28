@@ -9,11 +9,8 @@ import { randomUUID as uuid } from "node:crypto";
 export const getAll = async (): Promise<Todo[]> => {
   return await prisma.todo.findMany({
     include: {
-      user: {
-        select: {
-          name: true,
-        },
-      },
+      select: {}
+      name: true,
     },
     orderBy: {
       createdAt: "desc",
@@ -57,13 +54,10 @@ export const update = async (
   });
 };
 
-export const deleteById = async (id: string): Promise<Todo | null> => {
-  const todo = await prisma.todo.findUnique({ where: { id } });
-  if (!todo) return null;
-  await prisma.todo.delete({
+export const deleteById = async (id: string): Promise<void> => {
+   await prisma.todo.delete({
     where: {
       id,
     },
   });
-  return todo;
 };

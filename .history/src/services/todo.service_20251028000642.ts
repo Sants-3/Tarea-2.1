@@ -57,13 +57,11 @@ export const update = async (
   });
 };
 
-export const deleteById = async (id: string): Promise<Todo | null> => {
-  const todo = await prisma.todo.findUnique({ where: { id } });
-  if (!todo) return null;
+export const deleteById = async (id: string): Promise<void> => {
   await prisma.todo.delete({
     where: {
       id,
     },
   });
-  return todo;
 };
+
