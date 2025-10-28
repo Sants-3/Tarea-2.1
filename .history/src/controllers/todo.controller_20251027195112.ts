@@ -106,10 +106,36 @@ export const deleteById = async (
     }
 
     await TodoService.deleteById(id);
+    return res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+};
 
-    return res.status(200).json({
-      message: "Tarea eliminada con éxito",
-    });
+export const deleteById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = req.params.id;
+
+    const { success, error, data } = validateTodoPartial(req.body);
+
+    if (!success) {
+      return res.status(400).json(error.issues);
+    }
+
+    const result = await TodoService.findById(id);
+
+    if (!result) {
+      return res.status(404).json({
+        message: "La tarea no existe",
+      });
+    }
+
+    const todo = await TodoService.update(id, data);
+    return res.status(200).json(todo);
   } catch (error) {
     next(error);
   }

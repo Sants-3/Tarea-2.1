@@ -51,7 +51,7 @@ export const update = async (
 };
 
 export const deleteById = async (id: string): Promise<void> => {
-   await prisma.todo.delete({
+  retu await prisma.todo.delete({
     where: {
       id,
     },

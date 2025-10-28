@@ -105,12 +105,5 @@ export const deleteById = async (
       });
     }
 
-    await TodoService.deleteById(id);
-
-    return res.status(200).json({
-      message: "Tarea eliminada con éxito",
-    });
-  } catch (error) {
-    next(error);
-  }
+    
 };

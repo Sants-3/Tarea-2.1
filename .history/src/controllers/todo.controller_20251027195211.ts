@@ -97,20 +97,5 @@ export const deleteById = async (
   try {
     const id = req.params.id;
 
-    const result = await TodoService.findById(id);
-
-    if (!result) {
-      return res.status(404).json({
-        message: "La tarea no existe",
-      });
-    }
-
-    await TodoService.deleteById(id);
-
-    return res.status(200).json({
-      message: "Tarea eliminada con éxito",
-    });
-  } catch (error) {
-    next(error);
-  }
+    
 };

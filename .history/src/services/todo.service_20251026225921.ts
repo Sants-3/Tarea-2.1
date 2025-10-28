@@ -49,11 +49,3 @@ export const update = async (
     data: payload,
   });
 };
-
-export const deleteById = async (id: string): Promise<void> => {
-   await prisma.todo.delete({
-    where: {
-      id,
-    },
-  });
-};

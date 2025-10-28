@@ -95,7 +95,13 @@ export const deleteById = async (
   next: NextFunction
 ) => {
   try {
-    const id = req.params.id;
+    const id = req.params.id
+
+    const { success, error, data } = validateTodoPartial(req.body);
+
+    if (!success) {
+      return res.status(400).json(error.issues);
+    }
 
     const result = await TodoService.findById(id);
 
@@ -105,11 +111,8 @@ export const deleteById = async (
       });
     }
 
-    await TodoService.deleteById(id);
-
-    return res.status(200).json({
-      message: "Tarea eliminada con éxito",
-    });
+    const todo = await TodoService.update(id, data);
+    return res.status(200).json(todo);
   } catch (error) {
     next(error);
   }

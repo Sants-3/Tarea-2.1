@@ -105,11 +105,12 @@ export const deleteById = async (
       });
     }
 
-    await TodoService.deleteById(id);
+    const exito = await TodoService.deleteById(id);
+    if (exito) {
+      
+    }
 
-    return res.status(200).json({
-      message: "Tarea eliminada con éxito",
-    });
+    return res.status(204).send();
   } catch (error) {
     next(error);
   }

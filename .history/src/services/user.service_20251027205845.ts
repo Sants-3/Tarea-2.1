@@ -1,5 +1,5 @@
 import { prisma } from "../db/client";
-import { Todo } from "../interfaces/todo.interface";
+import { User } from "../interfaces/todo.interface";
 import { randomUUID as uuid } from "node:crypto";
 // import { v4 as uuid } from "uuid"; //? requiere de la instalacion de un paquete externo
 

@@ -1,21 +1,17 @@
 import { prisma } from "../db/client";
-import { Todo } from "../interfaces/todo.interface";
+import { User } from "../interfaces/user.interface";
 import { randomUUID as uuid } from "node:crypto";
-// import { v4 as uuid } from "uuid"; //? requiere de la instalacion de un paquete externo
 
-// "base de datos"
-// const todos: Todo[] = [];
-
-export const getAll = async (): Promise<Todo[]> => {
-  return await prisma.todo.findMany({
+export const getAll = async (): Promise<User[]> => {
+  return await prisma.user.findMany({
     orderBy: {
-      createdAt: "desc",
+      id: "asc",
     },
   });
 };
 
-export const findById = async (id: string): Promise<Todo | null> => {
-  return await prisma.todo.findUnique({
+export const findById = async (id: number): Promise<User | null> => {
+  return await prisma.user.findUnique({
     where: {
       id,
     },
@@ -23,12 +19,6 @@ export const findById = async (id: string): Promise<Todo | null> => {
 };
 
 export const create = async (todo: Partial<Todo>): Promise<Todo> => {
-  // const newTodo: Todo = {
-  //   id: uuid(),
-  //   title: todo.title!,
-  //   description: todo.description ?? null,
-  //   completed: !!todo.completed,
-  // };
 
   const newTodo = { id: uuid(), ...todo } as Todo;
 
