@@ -1,7 +1,6 @@
 import express from "express";
 // import { loadEnvFile } from "node:process";
-import todosRoutes from "./routes/todos.routes";
-import usersRoutes from "./routes/user.routes";
+import {todosRoutes} from "./routes/todos.routes";
 import { errorHandler } from "./middlewares/errorHandler";
 import dotenv  from 'dotenv'
 // loadEnvFile(); // cargar las variables de entorno

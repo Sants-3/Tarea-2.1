@@ -1,7 +1,6 @@
 import express from "express";
 // import { loadEnvFile } from "node:process";
 import todosRoutes from "./routes/todos.routes";
-import usersRoutes from "./routes/user.routes";
 import { errorHandler } from "./middlewares/errorHandler";
 import dotenv  from 'dotenv'
 // loadEnvFile(); // cargar las variables de entorno
@@ -16,7 +15,6 @@ app.get("/", (req, res) => {
 
 // un middleware para definir las rutas
 app.use("/todos", todosRoutes);
-app.use("/users", usersRoutes);
 
 app.use(errorHandler) // middleware propio para manejar errores
 
